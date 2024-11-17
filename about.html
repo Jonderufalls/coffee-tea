@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee & Tea</title>
+    <link rel="icon" href="PicsVids/c&f_logo.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #4a2c2a; /* Coffee brown */
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center; /* Horizontally centers */
+            align-items: center; /* Vertically centers */
+        }
+        .navbar img {
+            width: 80px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 30px;
+                background-color: #4a2c2a;
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #fbe5c8; /* Creamy coffee */
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .hero img {
+            max-width: 100px;
+            margin-top: 20px;
+        }
+        /* Section Titles */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4a2c2a;
+        }
+        .section hr {
+            width: 50px;
+            border: 3px solid #4a2c2a;
+            margin: 0 auto 20px;
+            border-radius: 3px;
+        }
+        /* Best Sellers */
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card p {
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        /* Promotional Poster */
+        .promo img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        /* Footer */
+        #footer {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #4a2c2a;
+            text-decoration: none;
+        }
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4a2c2a;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .floating-btn:hover {
+            background-color: #3b2623;
+        }
+        /* About Page Styles */
+        .about-section {
+            padding: 50px;
+        }
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a2c2a;
+        }
+        .about-section p {
+            line-height: 1.6;
+            text-align: justify; /* Align text to justify */
+        }
+        .about-section ul {
+            list-style: disc;
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+        .about-section .social-links {
+            text-align: center;
+        }
+        .about-section .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: #4a2c2a;
+            transition: color 0.3s ease;
+        }
+        .about-section .social-links a:hover {
+            color: #3b2623;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .about-intro {
+            background-color: #fbe5c8; /* Creamy coffee */
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .about-commitment, .about-values {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            color: #4a2c2a;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo"><img src="PicsVids/c&f_logo.png" alt="Brew Haven Logo"> <span>Coffee & Tea</span></div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://jonderufalls.github.io/Kupal-Company/">Log out</a>
+    </div>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<!-- About Us Section -->
+<div class="about-section">
+    <div class="container">
+        <div class="about-intro">
+            <h2>About Coffee & Tea</h2>
+            <p>Welcome to Coffee & Tea, your haven for handcrafted beverages and warm hospitality. We're a team of passionate coffee and tea enthusiasts dedicated to bringing you the finest brews and a comforting atmosphere.</p>
+
+            <p>Our journey began with a shared love for the art of brewing and a desire to create a space where people could connect over a cup of something special. We believe that every cup holds a story, and we're committed to sharing ours with you.</p>
+        </div>
+
+        <div class="about-commitment">
+            <h3>Our Commitment</h3>
+            <ul>
+                <li><strong>Quality:</strong> We source the finest beans and tea leaves, ensuring each cup is bursting with flavor and aroma.</li>
+                <li><strong>Craftmanship:</strong> Our baristas are skilled artisans, meticulously crafting each beverage to perfection.</li>
+                <li><strong>Community:</strong> We strive to create a welcoming and inclusive space where everyone feels comfortable and connected.</li>
+            </ul>
+        </div>
+
+        <div class="about-values">
+            <h3>Our Values</h3>
+            <ul>
+                <li><strong>Passion:</strong> We're passionate about coffee and tea, and it shows in everything we do.</li>
+                <li><strong>Integrity:</strong> We believe in honesty and transparency in all our dealings.</li>
+                <li><strong>Excellence:</strong> We strive for excellence in every aspect of our business.</li>
+            </ul>
+        </div>
+        <!-- Mission and Vision -->
+        <div class="section">
+            <div class="container">
+                <h2>Mission</h2>
+                <p>To provide the ultimate coffee and tea experience, blending quality, comfort, and community in every cup.</p>
+                <h2>Vision</h2>
+                <p>To be the go-to haven for coffee and tea lovers, celebrated for our exceptional beverages and welcoming atmosphere.</p>
+            </div>
+        </div>
+        <p>We invite you to step into our cozy haven and experience the magic of Coffee & Tea for yourself. Whether you're seeking a caffeine boost, a moment of peace, or a place to connect with friends, we're here to welcome you with open arms and a delicious cup.</p>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/rainier.reli.9?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<div id="footer">
+    <p>© 2024 Coffee & Tea | All Rights Reserved</p>
+</div>
+
+<!-- Floating Button -->
+<button class="floating-btn" onclick="window.location.href='menu.html'">
+    <i class="fas fa-coffee"></i>
+</button>
+
+<script>
+    // Toggle navigation menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

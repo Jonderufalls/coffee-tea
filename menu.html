@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee & Tea Menu</title>
+    <link rel="icon" href="PicsVids/c&f_logo.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #4a2c2a; /* Coffee brown */
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center; /* Horizontally centers */
+            align-items: center; /* Vertically centers */
+        }
+        .navbar img {
+            width: 80px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 30px;
+                background-color: #4a2c2a;
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Section Titles */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4a2c2a;
+        }
+        .section hr {
+            width: 50px;
+            border: 3px solid #4a2c2a;
+            margin: 0 auto 20px;
+            border-radius: 3px;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background-color: #fbe5c8;
+            padding: 50px;
+            text-align: center;
+        }
+        .welcome-section h1 {
+            font-size: 2.5em;
+            color: #4a2c2a;
+        }
+        .welcome-section p {
+            font-size: 1.2em;
+            color: #222222;
+            margin-top: 10px;
+        }
+
+        /* Product Cards */
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background-color: rgb(255, 172, 94);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card p {
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .product-card .price {
+            color: #4a2c2a;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Order Section */
+        .order-section {
+            background-color: #fbe5c8;
+            padding: 50px;
+            text-align: center;
+        }
+        .order-btn {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .order-btn:hover {
+            background-color: #3b2623;
+        }
+
+        .order-form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-form input, .order-form select, .order-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .order-form button {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .order-form button:hover {
+            background-color: #3b2623;
+        }
+
+        /* Footer Styles */
+.footer {
+    background-color: #ffffff;
+    color: white;
+    padding: 40px 0;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-about {
+    background-color: #ca9a46;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.footer-about h3 {
+    font-size: 1.5em;
+    color: #fbe5c8;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    font-size: 1.1em;
+    color: #020202;
+    line-height: 1.6;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-contact h2 {
+    font-size: 2em;
+    color: #ff9100;
+    margin-bottom: 10px;
+}
+
+.footer-contact p {
+    font-size: 1.1em;
+    color: #333333;
+    margin: 5px 0;
+}
+
+.footer-contact a {
+    color: #4d2200;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+.visit-us {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #4a2c2a;
+    border-radius: 10px;
+}
+
+.visit-us h3 {
+    font-size: 1.3em;
+    color: #fbe5c8;
+    margin-bottom: 10px;
+}
+
+.visit-us p {
+    font-size: 1.1em;
+    color: #bbb;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-about, .footer-contact {
+        padding: 20px;
+    }
+    /* Footer */
+    
+}
+        #footer {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo"><img src="PicsVids/c&f_logo.png" alt="Brew Haven Logo"> <span>Coffee & Tea</span></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://jonderufalls.github.io/Kupal-Company/">Log out</a>
+    </div>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<!-- Welcome Section -->
+<div class="welcome-section">
+    <h1>ORDER YOURS NOW</h1>
+    <p>We serve the finest coffee and tea made with the best ingredients ☕️. 
+        Order your favorite drinks and have them delivered right to your doorstep.✨</p>
+</div>
+
+<!-- Best Sellers Section -->
+<div class="section">
+    <h2>Best Sellers</h2>
+    <hr>
+    <div class="products">
+        <!-- Product Cards -->
+        <div class="product-card">
+            <img src="PicsVids/blueberry.jpg" alt="Classic Latte">
+            <p>Blueberry Crumble</p>
+            <p class="price">$4.50</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/lavender.jpg" alt="Iced Coffee">
+            <p>Lavender Earl Grey</p>
+            <p class="price">$5.00</p>
+        </div>
+        
+    </div>
+</div>
+<!-- Coffee Section -->
+<div class="section">
+    <h2>Coffee</h2>
+    <hr>
+    <div class="products">
+        <!-- Product Cards -->
+        <div class="product-card">
+            <img src="PicsVids/blueberry.jpg" alt="Classic Latte" style="width: 100%; height: auto;">
+            <p>Blueberry Crumble</p>
+            <p class="price">$4.50</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/maple-bacon.jpg" alt="Iced Coffee" style="width: 100%; height: auto;">
+            <p>Maple Bacon</p>
+            <p class="price">$5.00</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/coconut-macaroon.jpg" alt="Cappuccino" style="width: 100%; height: auto;">
+            <p>Coconut Macaroon</p>
+            <p class="price">$4.75</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/rose-latte.jpg" alt="Flat White" style="width: 100%; height: auto;">
+            <p>Rose Latte</p>
+            <p class="price">$4.25</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/spiced-chai.jpg" alt="Latte Macchiato" style="width: 100%; height: auto;">
+            <p>spiced Chai</p>
+            <p class="price">$4.75</p>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Tea Section -->
+<div class="section">
+    <h2>Tea</h2>
+    <hr>
+    <div class="products">
+        <!-- Product Cards -->
+        <div class="product-card">
+            <img src="PicsVids/lavender.jpg" alt="Green Tea" style="width: 100%; height: auto;">
+            <p>Lavender Earl Grey</p>
+            <p class="price">$3.00</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/blood-orange.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            <p>Blood Orange</p>
+            <p class="price">$3.50</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/ginger-peach.jpg" alt="Green Tea" style="width: 100%; height: auto;">
+            <p>Ginger Peach</p>
+            <p class="price">$3.00</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/hibiscus-mint.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            <p>Hibiscus Mint</p>
+            <p class="price">$3.50</p>
+        </div>
+        <div class="product-card">
+            <img src="PicsVids/matcha-greantea.jpg" alt="Iced Tea" style="width: 100%; height: auto;">
+            <p>Matcha Green Tea with Lemon Verbena</p>
+            <p class="price">$3.50</p>
+        </div>
+    </div>
+</div>
+
+<!-- Order Section -->
+<div class="order-section">
+    <h1>Place Your Order</h1>
+    <p>Choose your favorite drink from the menu and place your order directly online.</p>
+
+    <!-- Order Form -->
+    <form class="order-form">
+        <label for="product">Select a Drink:</label>
+        <select id="product" name="product">
+            <option value="classic-latte">Classic Latte</option>
+            <option value="iced-coffee">Iced Coffee</option>
+            <option value="cappuccino">Cappuccino</option>
+            <option value="green-tea">Green Tea</option>
+            <option value="iced-tea">Iced Tea</option>
+            <option value="flat-white">Flat White</option>
+            <option value="latte-macchiato">Latte Macchiato</option>
+            <option value="espresso">Espresso</option>
+            <option value="matcha-latte">Matcha Latte</option>
+            <option value="chai-latte">Chai Latte</option>
+        </select>
+        <label for="name">Quantity</label>
+        <input type="number" id="name" name="name" required>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+        <button type="submit">Submit Order</button>
+    </form>
+</div>
+
+<!-- Contact Us Section -->
+<div class="footer">
+    <div class="footer-container">
+        <!-- About Coffee & Tea Section -->
+        <div class="footer-about">
+            <h3>About Coffee & Tea</h3>
+            <p>We are passionate about serving the finest coffee and tea. Visit us to enjoy freshly brewed drinks, made with high-quality ingredients and love.</p>
+        </div>
+
+        <!-- Contact Us and Visit Us Section -->
+        <div class="footer-contact">
+            <h2>Contact Us</h2>
+            <p>Have any questions or need assistance? Reach out to us:</p>
+            <p>Facebook: <a href="#">Mood Brew Coffee & Tea</a></p>
+            <p>Instagram: <a href="#">@moodbrewC&T</a></p>
+            <p>Telegram: <a href="#">@moodbrewC&T</a></p>
+
+            <!-- Visit Us Section -->
+            <div class="visit-us">
+                <h3>Visit Us</h3>
+                <p>We'd love to see you! Come visit us at:</p>
+                <p><strong>Coffee & Tea Shop</strong></p>
+                <p>P.I Garcia Street Naval, Biliran</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div id="footer">
+    <p>© 2024 Coffee & Tea | All Rights Reserved</p>
+</div>
+    
+<script>
+    // Toggle navigation menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

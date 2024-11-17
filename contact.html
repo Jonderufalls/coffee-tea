@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee & Tea</title>
+    <link rel="icon" href="PicsVids/c&f_logo.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #4a2c2a; /* Coffee brown */
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center; /* Horizontally centers */
+            align-items: center; /* Vertically centers */
+        }
+        .navbar img {
+            width: 80px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 30px;
+                background-color: #4a2c2a;
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #fbe5c8; /* Creamy coffee */
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .hero img {
+            max-width: 100px;
+            margin-top: 20px;
+        }
+        /* Section Titles */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4a2c2a;
+        }
+        .section hr {
+            width: 50px;
+            border: 3px solid #4a2c2a;
+            margin: 0 auto 20px;
+            border-radius: 3px;
+        }
+        /* Best Sellers */
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card p {
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        /* Promotional Poster */
+        .promo img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        /* Footer */
+        #footer {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #4a2c2a;
+            text-decoration: none;
+        }
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4a2c2a;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .floating-btn:hover {
+            background-color: #3b2623;
+        }
+        /* Contact Page Styles */
+        .contact-section {
+            padding: 50px;
+        }
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a2c2a;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .contact-info {
+            background-color: #fbe5c8; /* Creamy coffee */
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .contact-info h3 {
+            color: #4a2c2a;
+            margin-bottom: 10px;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a{
+            text-decoration: none;
+            color: #333;
+        }
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form label {
+            margin-bottom: 5px;
+        }
+        .contact-form input[type="text"], 
+        .contact-form input[type="email"], 
+        .contact-form textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button[type="submit"] {
+            background-color: #4a2c2a;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button[type="submit"]:hover {
+            background-color: #3b2623;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo"><img src="PicsVids/c&f_logo.png" alt="Brew Haven Logo"> <span>Coffee & Tea</span></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="#">Contact</a>
+        <a href="https://jonderufalls.github.io/Kupal-Company/">Log out</a>
+    </div>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<div class="contact-section">
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p><strong>Address:</strong> P.I Garcia Street Naval, Biliran</p>
+            <p><strong>Facebook:</strong> <a href="">Mood Brew Coffee & Tea</p></a>
+            <p><strong>Instagram:</strong> <a href="">@moodbrewC&T</p></a>
+            <p><strong>Telegram:</strong> <a href="">@moodbrewC&T</p></a>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form action="#" method="post">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+    <p>© 2024 Coffee & Tea | All Rights Reserved</p>
+</div>
+
+<!-- Floating Button -->
+<button class="floating-btn" onclick="window.location.href='menu.html'">
+    <i class="fas fa-coffee"></i>
+</button>
+
+<script>
+    // Toggle navigation menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
